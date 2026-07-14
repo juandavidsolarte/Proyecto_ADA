@@ -95,25 +95,39 @@ def menu_principal():
     sistema = SistemaTareas()
     
     # Insertar algunas tareas de prueba iniciales
-    sistema.agregar_tarea(101, "Configurar base de datos", 8)
-    sistema.agregar_tarea(102, "Diseñar interfaz de usuario", 5)
-    sistema.agregar_tarea(103, "Pruebas de seguridad", 10)
-    sistema.agregar_tarea(104, "Redactar documentación", 3)
+
+    sistema.agregar_tarea(101, "Estudiar para el examen", 11)
+    sistema.agregar_tarea(102, "Comprar útiles escolares", 5)
+    sistema.agregar_tarea(103, "Revisar correos electrónicos", 10)
+    
+
+    sistema.agregar_tarea(104, "Preparar la cena", 7)
+    sistema.agregar_tarea(105, "Sacar a pasear al perro", 9)
+    sistema.agregar_tarea(106, "Pagar recibos de luz", 6)
+    sistema.agregar_tarea(107, "Configurar base de datos", 8)
+    sistema.agregar_tarea(108, "Diseñar interfaz de usuario", 5)
+    sistema.agregar_tarea(109, "Pruebas de seguridad", 10)
+    sistema.agregar_tarea(110, "Redactar documentación", 3)
+
+
+    #Pruebas funcioanles
+
 
     while True:
         mostrar_banner()
         print(f"{BOLD}{BLUE}--- MENU PRINCIPAL ---{RESET}")
         print(f"{GREEN}1.{RESET} Agregar nueva tarea")
         print(f"{GREEN}2.{RESET} Atender tarea de mayor prioridad")
-        print(f"{GREEN}3.{RESET} Buscar tarea por ID")
-        print(f"{GREEN}4.{RESET} Eliminar tarea por ID")
-        print(f"{GREEN}5.{RESET} Modificar prioridad de una tarea")
-        print(f"{GREEN}6.{RESET} Listar tareas ordenadas por ID (AVL Tree)")
-        print(f"{GREEN}7.{RESET} Listar tareas ordenadas por Prioridad (MaxHeap)")
-        print(f"{GREEN}8.{RESET} Salir")
+        print(f"{GREEN}3.{RESET} Completar tarea por ID")
+        print(f"{GREEN}4.{RESET} Buscar tarea por ID")
+        print(f"{GREEN}5.{RESET} Eliminar tarea por ID")
+        print(f"{GREEN}6.{RESET} Modificar prioridad de una tarea")
+        print(f"{GREEN}7.{RESET} Listar tareas ordenadas por ID (AVL Tree)")
+        print(f"{GREEN}8.{RESET} Listar tareas ordenadas por Prioridad (MaxHeap)")
+        print(f"{GREEN}9.{RESET} Salir")
         print("-" * 30)
 
-        opcion = leer_entero(f"{BOLD}Seleccione una opción (1-8): {RESET}", 1)
+        opcion = leer_entero(f"{BOLD}Seleccione una opción (1-9): {RESET}", 1)
 
         if opcion == 1:
             print(f"\n{BOLD}{BLUE}[Agregar Nueva Tarea]{RESET}")
@@ -139,6 +153,16 @@ def menu_principal():
                 print(f"\n{YELLOW}No hay tareas pendientes en el sistema.{RESET}")
 
         elif opcion == 3:
+            print(f"\n{BOLD}{BLUE}[Completar Tarea por ID]{RESET}")
+            id_tarea = leer_entero("Ingrese el ID de la tarea a completar: ", 1)
+            tarea = sistema.completar_tarea(id_tarea)
+            if tarea:
+                print(f"\n{GREEN}✔ Tarea completada y eliminada del sistema:{RESET}")
+                print(f"  {tarea}{RESET}")
+            else:
+                print(f"\n{RED}❌ No se encontró ninguna tarea con ID {id_tarea}.{RESET}")
+
+        elif opcion == 4:
             print(f"\n{BOLD}{BLUE}[Buscar Tarea por ID]{RESET}")
             id_tarea = leer_entero("Ingrese el ID de la tarea a buscar: ", 1)
             tarea = sistema.buscar_tarea(id_tarea)
@@ -150,7 +174,7 @@ def menu_principal():
             else:
                 print(f"\n{RED}❌ Tarea con ID {id_tarea} no encontrada.{RESET}")
 
-        elif opcion == 4:
+        elif opcion == 5:
             print(f"\n{BOLD}{BLUE}[Eliminar Tarea por ID]{RESET}")
             id_tarea = leer_entero("Ingrese el ID de la tarea a eliminar: ", 1)
             tarea = sistema.eliminar_tarea(id_tarea)
@@ -160,7 +184,7 @@ def menu_principal():
             else:
                 print(f"\n{RED}❌ No se encontró ninguna tarea con ID {id_tarea}.{RESET}")
 
-        elif opcion == 5:
+        elif opcion == 6:
             print(f"\n{BOLD}{BLUE}[Modificar Prioridad]{RESET}")
             id_tarea = leer_entero("Ingrese el ID de la tarea a modificar: ", 1)
             tarea = sistema.buscar_tarea(id_tarea)
@@ -172,15 +196,15 @@ def menu_principal():
             else:
                 print(f"\n{RED}❌ Tarea con ID {id_tarea} no encontrada.{RESET}")
 
-        elif opcion == 6:
+        elif opcion == 7:
             tareas = sistema.listar_tareas_por_id()
             imprimir_tabla(tareas, "TAREAS ORDENADAS POR ID (AVL INORDEN)")
 
-        elif opcion == 7:
+        elif opcion == 8:
             tareas = sistema.listar_tareas_por_prioridad()
             imprimir_tabla(tareas, "TAREAS ORDENADAS POR PRIORIDAD (MAXHEAP ORDENADO)")
 
-        elif opcion == 8:
+        elif opcion == 9:
             print(f"\n{BOLD}{YELLOW}¡Gracias por usar el sistema! Saliendo...{RESET}\n")
             break
 

@@ -64,6 +64,13 @@ class SistemaTareas:
             return tarea_eliminada
         return None
 
+    def completar_tarea(self, id_tarea):
+        """
+        Marca una tarea como completada, eliminándola del sistema.
+        Reutiliza la lógica de eliminación.
+        """
+        return self.eliminar_tarea(id_tarea)
+
     def modificar_prioridad(self, id_tarea, nueva_prioridad):
         """
         Modifica la prioridad de una tarea existente.
