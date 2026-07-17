@@ -191,8 +191,9 @@ O podés abrirlo directamente en **VS Code** con la extensión de Jupyter.
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Autores
 
 **Juan David Solarte**  
+**Maria Baracaldo**  
 Ingeniería de Sistemas — Universidad del Valle  
 Curso: Análisis de Algoritmos
